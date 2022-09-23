@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "9af03c97-d1fb-490f-8905-5a8d4d250d9c"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -31,6 +34,9 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/all.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -99,6 +105,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.scss"
             ],
             "scripts": []

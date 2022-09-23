@@ -1,0 +1,62 @@
+<div class="container mt-5">
+    <h1 class="header text-center">
+        <span class="header__title">Contents</span>
+    </h1>
+
+    <table class="table table-borderless table-responsive card-1 p-4">
+        <thead>
+            <tr class="border-bottom">
+                <th class="text-center">
+                    <span class="ml-2">#</span>
+                </th>
+                <th class="text-center">
+                    <span class="ml-2">Title</span>
+                </th>
+                <th class="text-center">
+                    <span class="ml-2">Date</span>
+                </th>
+                <th class="text-center">
+                    <span class="ml-4">Action</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="border-bottom" *ngFor="let i of contents">
+                <td class="text-center">
+                    <div class="p-2">
+                        <span class="d-block font-weight-bold">Tomorrow</span>
+                        <small>2:30PM</small>
+                    </div>
+                </td>
+                <td>
+                    <div class="p-2 d-flex flex-row align-items-center mb-2" style="justify-content: center">
+                        <img src="https://i.imgur.com/ZSkeqnd.jpg" width="40" class="rounded-circle">
+                        <div class="d-flex flex-column ms-2">
+                            <span class="d-block font-weight-bold">Jennifer john</span>
+                            <small class="text-muted">Jasmine Owner Reality group</small>
+                        </div>
+                    </div>
+
+                </td>
+                <td class="text-center">
+                    <div class="p-2">
+                        <span class="font-weight-bold">Ammy Song</span>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="p-2 icons">
+                        <a class="hover"><i class="fas fa-info-circle"></i></a>
+                        <a class="hover"><i class="fas fa-edit text-muted hover"></i></a>
+                        <a class="hover"><i class="fas fa-eraser text-danger"></i></a>
+                    </div>
+                </td>
+            </tr>
+
+
+
+
+        </tbody>
+    </table>
+
+
+</div>
