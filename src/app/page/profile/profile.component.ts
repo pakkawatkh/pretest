@@ -1,25 +1,22 @@
-import { EditContentComponent } from './../edit-content/edit-content.component';
-import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
-
+import { MatDialog } from '@angular/material/dialog';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 @Component({
-  selector: 'app-content-detail',
-  templateUrl: './content-detail.component.html',
-  styleUrls: ['./content-detail.component.scss']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
 })
-export class ContentDetailComponent implements OnInit {
-
+export class ProfileComponent implements OnInit {
   _isUpdate: boolean = false;
   contentId: number = 0;
-
   constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
   openEdit() {
-    this.dialog.open(EditContentComponent, {
+    this.dialog.open(EditProfileComponent, {
       panelClass: 'custom-dialog-container',
-      width: '100%',
+      width: '50%',
       data: { id: this.contentId }
     })
       .afterClosed()

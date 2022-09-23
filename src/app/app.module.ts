@@ -9,12 +9,15 @@ import { HomeComponent } from './page/home/home.component';
 import { LoginComponent } from './page/login/login.component';
 import { ContentsComponent } from './page/contents/contents.component';
 import { EditContentComponent } from './page/edit-content/edit-content.component';
-
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { ContentDetailComponent } from './page/content-detail/content-detail.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { HeaderComponent } from './header/header.component';
+import { ProfileComponent } from './page/profile/profile.component';
+import { EditProfileComponent } from './page/profile/edit-profile/edit-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,16 +26,20 @@ import { ContentDetailComponent } from './page/content-detail/content-detail.com
     ContentsComponent,
     AddContentComponent,
     EditContentComponent,
-    ContentDetailComponent
+    ContentDetailComponent,
+    HeaderComponent,
+    ProfileComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatTableModule,
-    MatInputModule
+    MatDialogModule,
+    AngularEditorModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

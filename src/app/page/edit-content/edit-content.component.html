@@ -1,1 +1,23 @@
-<p>edit-content works!</p>
+<div>
+    <h1 class="text-center">
+        <span class="header">Edit Content</span>
+    </h1>
+</div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="title-g mb-3">
+        <span class="title">title</span>
+        <div class=" mt-2">
+            <input type="text" class="form-control" formControlName="title">
+        </div>
+    </div>
+    <div>
+        <span>detail</span>
+        <div class="mt-2">
+            <angular-editor [config]="editer.editorConfig" formControlName="detail"></angular-editor >
+        </div>
+    </div>
+    <div class="button mt-2 text-end">
+        <button type="button" class="btn btn-danger me-2">Cancle</button>
+        <button type="submit" class="btn btn-success">Update</button>
+    </div>
+</form>
