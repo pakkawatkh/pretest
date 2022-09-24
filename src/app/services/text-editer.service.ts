@@ -18,7 +18,7 @@ export class TextEditerService {
     translate: 'yes',
     enableToolbar: true,
     showToolbar: true,
-    placeholder: 'รายละเอียด...',
+    placeholder: 'description...',
     defaultParagraphSeparator: '',
     defaultFontName: '',
     defaultFontSize: '',
@@ -46,6 +46,6 @@ export class TextEditerService {
     uploadWithCredentials: false,
     sanitize: false,
     toolbarPosition: 'top',
-    toolbarHiddenButtons: [['insertVideo']],
+    toolbarHiddenButtons: [['insertVideo','insertImage']],
   };
 }

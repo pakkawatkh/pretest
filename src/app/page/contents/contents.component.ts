@@ -1,8 +1,12 @@
+import { errorResponse } from 'src/app/model/Response.model';
+import { ContentModel } from './../../model/Content.model';
+import { ApiService } from './../../services/api.service';
 import { AddContentComponent } from './../add-content/add-content.component';
 import { EditContentComponent } from './../edit-content/edit-content.component';
 import { ContentDetailComponent } from './../content-detail/content-detail.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { SweerAlertService } from 'src/app/services/sweer-alert.service';
 @Component({
   selector: 'app-contents',
   templateUrl: './contents.component.html',
@@ -10,37 +14,76 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ContentsComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  contents: ContentModel[] = new Array<ContentModel>();
 
-  openDetail() {
-    const dialogRef = this.dialog.open(ContentDetailComponent);
-
-    dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-  openEdit(id:any) {
-    const dialogRef = this.dialog.open(EditContentComponent, {
-      panelClass: 'custom-dialog-container',
-      width: '100%',
-      data: { id: id}
-    });
-
-    dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
-  openAdd(){
-    const dialogRef = this.dialog.open(AddContentComponent);
-
-    dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-  contents = [1, 1, 1, 1, 1, 1]
+  constructor(
+    private dialog: MatDialog,
+    private api: ApiService,
+    private alert: SweerAlertService
+  ) { }
 
   ngOnInit(): void {
+    this.loadContent()
   }
+
+  loadContent() {
+    this.api.authGet('/contents').subscribe((res: ContentModel[]) => {
+      this.contents = res;
+    });
+  }
+
+  openDetail(content: ContentModel) {
+    this.dialog.open(ContentDetailComponent, {
+      panelClass: 'custom-dialog-container',
+      width: '100%',
+      data: content,
+      disableClose: true
+    }
+    ).afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.loadContent();
+      }
+    });
+  }
+
+  openEdit(content: ContentModel) {
+    this.dialog.open(EditContentComponent, {
+      panelClass: 'custom-dialog-container',
+      width: '100%',
+      data: content
+    }).afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.loadContent();
+      }
+    });
+  }
+
+  openAdd() {
+    this.dialog.open(AddContentComponent).afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.loadContent();
+      }
+    });
+  }
+  onDelete(id: any) {
+    this.alert.alert_comfirm('ยืนยันการลบข้อมูล').then((result) => {
+      if (result.isConfirmed) {
+        this.api.authDelete('/content?id=' + id).subscribe({
+          next: (res: any) => {
+            this.alert.alert_success(res.message);
+            setTimeout(() => {
+              this.loadContent();
+            }, 2000);
+          },
+          error: (err:errorResponse) => {
+            this.api.checkError(err);
+          }
+        });
+      }
+    })
+
+  }
+
+
 
 }

@@ -5,19 +5,31 @@
 </div>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="title-g mb-3">
-        <span class="title">title</span>
+        <!-- <span class="title">title</span> -->
         <div class=" mt-2">
-            <input type="text" class="form-control" formControlName="title">
+            <input type="text" class="form-control" formControlName="title" placeholder="Title"
+                [ngClass]="{ 'is-invalid': submitted && f['title'].errors }">
+            <div *ngIf="submitted && f['title'].errors" class="invalid-feedback text-start">
+                <div *ngIf="f['title'].errors['required']">โปรดระบุ Title</div>
+                <div *ngIf="f['title'].errors['maxlength']">
+                    Title ต้องมีความยาวไม่เกิน 40 ตัวอักษร
+                  </div>
+            </div>
         </div>
     </div>
     <div>
         <span>detail</span>
         <div class="mt-2">
-            <angular-editor [config]="editer.editorConfig" formControlName="detail"></angular-editor >
+            <angular-editor [config]="editer.editorConfig" formControlName="description"
+                [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"></angular-editor>
+            <div *ngIf="submitted && f['description'].errors" class="invalid-feedback text-start">
+                <div *ngIf="f['description'].errors['required']">โปรดระบุ Description</div>
+                
+            </div>
         </div>
     </div>
     <div class="button mt-2 text-end">
-        <button type="button" class="btn btn-danger me-2">Cancle</button>
+        <button type="button" class="btn btn-danger me-2" (click)="dialogRef.close(true)">Cancle</button>
         <button type="submit" class="btn btn-success">Save</button>
     </div>
 </form>

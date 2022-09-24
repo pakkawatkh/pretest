@@ -21,7 +21,22 @@ body {
 }
 
 
-.header{
+.header {
     // display: flex;
     // justify-content: space-between;
 }
+
+.fa-plus-circle {
+    color: black;
+}
+
+.crop {
+    flex: 1;
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+}
+
+

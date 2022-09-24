@@ -1,3 +1,7 @@
+import { GuardAuthenService } from './services/guard-authen.service';
+import { GuardLoginService } from './services/guard-login.service';
+import { RegisterComponent } from './page/register/register.component';
+import { LoginComponent } from './page/login/login.component';
 import { EditProfileComponent } from './page/profile/edit-profile/edit-profile.component';
 import { ProfileComponent } from './page/profile/profile.component';
 import { HomeComponent } from './page/home/home.component';
@@ -7,15 +11,25 @@ import { ContentsComponent } from './page/contents/contents.component';
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent
+    path: 'home', component: HomeComponent
   },
   {
     path: 'contents', component: ContentsComponent
   },
   {
-    path: 'profile', component: ProfileComponent
-  },{
+    path: 'profile', component: ProfileComponent,canActivate:[GuardAuthenService]
+  },
+  {
     path:'edit-profile',component:EditProfileComponent
+  },
+  {
+    path:'login',component:LoginComponent,canActivate:[GuardLoginService]
+  },
+  {
+    path:'register',component:RegisterComponent,canActivate:[GuardLoginService]
+  },
+  {
+    path: '', redirectTo: '/home', pathMatch: 'full'
   }
 ];
 

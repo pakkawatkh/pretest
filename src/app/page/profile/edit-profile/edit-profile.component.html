@@ -1,18 +1,32 @@
-<h2 class=" text-center">Edit Profle</h2>
-<label class="form-label mt-2 mx-2">username</label>
-<input class="form-control mx-2" type="text" placeholder="username">
+<h2 class="text-center">Edit Profle</h2>
 
-<label class="form-label mt-2 mx-2">email</label>
-<input class="form-control mx-2" type="text" placeholder="email">
 
-<label class="form-label mt-2 mx-2">nickname</label>
-<input class="form-control mx-2" type="text" placeholder="nickname">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-<!-- label -->
-<label class="form-label mt-5 mx-2">comfirm password</label>
-<input class="form-control mb-3 mx-2" type="password" placeholder="password">
-<div class="button">
+    <div class="form-group">
+        <input class="form-control mt-2" type="text" placeholder="nickname" formControlName="nickName"
+            [ngClass]="{ 'is-invalid': submitted && f['nickName'].errors }">
+        <div *ngIf="submitted && f['nickName'].errors" class="invalid-feedback text-start"
+            [ngClass]="{ 'is-invalid': submitted && f['nickName'].errors }">
+            <div *ngIf="f['nickName'].errors['required']">โปรดระบุชือเล่น</div>
+            <div *ngIf="f['nickName'].errors['maxlength']">
+                ชือเล่นต้องมีความยาวไม่เกิน 20 ตัวอักษร
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input class="form-control mt-2" type="email" placeholder="email" formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback text-start"
+            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+            <div *ngIf="f['email'].errors['required']">โปรดระบุอีเมล</div>
+            <div *ngIf="f['email'].errors['email']">อีเมลไม่ถูกต้อง</div>
+        </div>
+    </div>
 
-    <button class="btn btn-danger" type="button">Cancle</button>
-    <button class="btn btn-success mx-2" type="button">Update</button>
-</div>
+    <div class="button mt-2">
+
+        <button class="btn btn-danger" type="button" (click)="dialogRef.close(false)">Cancle</button>
+        <button class="btn btn-success mx-2" type="submit">Update</button>
+    </div>
+</form>

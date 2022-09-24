@@ -10,14 +10,22 @@ import { LoginComponent } from './page/login/login.component';
 import { ContentsComponent } from './page/contents/contents.component';
 import { EditContentComponent } from './page/edit-content/edit-content.component';
 import { ContentDetailComponent } from './page/content-detail/content-detail.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 import { HeaderComponent } from './header/header.component';
 import { ProfileComponent } from './page/profile/profile.component';
 import { EditProfileComponent } from './page/profile/edit-profile/edit-profile.component';
+import { RegisterComponent } from './page/register/register.component';
+import { ChangePasswordComponent } from './page/profile/change-password/change-password.component';
+import { NetworkInterceptor } from './network/network.interceptor';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +37,10 @@ import { EditProfileComponent } from './page/profile/edit-profile/edit-profile.c
     ContentDetailComponent,
     HeaderComponent,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    RegisterComponent,
+    ChangePasswordComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +50,16 @@ import { EditProfileComponent } from './page/profile/edit-profile/edit-profile.c
     AngularEditorModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTabsModule,
+    MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NetworkInterceptor,
+      multi: true,
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

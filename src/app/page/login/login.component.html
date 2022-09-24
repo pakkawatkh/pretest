@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="content">
+
+    <div class="card mt-2">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <h2 class="text-center mt-2">Login</h2>
+            <div class="form-group">
+                <input class="form-control" type="" placeholder="username" formControlName="userName"
+                    [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }">
+                <div *ngIf="submitted && f['userName'].errors" class="invalid-feedback text-start"
+                    [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }">
+                    <div *ngIf="f['userName'].errors['required']">โปรดกรอกชือผู้ใช้</div>
+
+                </div>
+            </div>
+
+            <!-- label -->
+            <div class="form-group">
+                <input class="form-control mt-2" type="password" placeholder="password" formControlName="password"
+                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback text-start">
+                    <div *ngIf="f['password'].errors['required']">โปรดกรอกรหัสผ่าน</div>
+
+                </div>
+            </div>
+            <div class="button my-3">
+                <span> <a routerLink="/register" class="hover" style="cursor: pointer;"> Sign-up</a> </span>
+                <button class="btn btn-success" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+</div>

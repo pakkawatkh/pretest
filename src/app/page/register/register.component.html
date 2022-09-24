@@ -1,0 +1,85 @@
+<div class="content">
+
+    <div class="card mt-2">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <h2 class="text-center mt-2">Sign-up</h2>
+
+            <!-- label -->
+            <div class="form-group">
+                <input class="form-control" type="" placeholder="username" formControlName="userName"
+                    [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }">
+                <div *ngIf="submitted && f['userName'].errors" class="invalid-feedback text-start"
+                    [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }">
+                    <div *ngIf="f['userName'].errors['required']">โปรดกรอกชือผู้ใช้</div>
+                    <div *ngIf="f['userName'].errors['minlength']">
+                        ผู้ใช้ต้องมีความยาวอย่างน้อย 4 ตัวอักษร
+                    </div>
+                    <div *ngIf="f['userName'].errors['maxlength']">
+                        ผู้ใช้ต้องมีความยาวไม่เกิน 40 ตัวอักษร
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control mt-2" type="text" placeholder="nickname" formControlName="nickName"
+                    [ngClass]="{ 'is-invalid': submitted && f['nickName'].errors }">
+                <div *ngIf="submitted && f['nickName'].errors" class="invalid-feedback text-start"
+                    [ngClass]="{ 'is-invalid': submitted && f['nickName'].errors }">
+                    <div *ngIf="f['nickName'].errors['required']">โปรดกรอกชือเล่น</div>
+                    <div *ngIf="f['nickName'].errors['maxlength']">
+                        ชือเล่นต้องมีความยาวไม่เกิน 20 ตัวอักษร
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="form-control mt-2" type="email" placeholder="email" formControlName="email"
+                    [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback text-start"
+                    [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+                    <div *ngIf="f['email'].errors['required']">โปรดกรอกอีเมล</div>
+                    <div *ngIf="f['email'].errors['email']">อีเมลไม่ถูกต้อง</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="form-control mt-2" type="password" placeholder="password" formControlName="password"
+                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback text-start">
+                    <div *ngIf="f['password'].errors['required']">โปรดกรอกรหัสผ่าน</div>
+                    <div *ngIf="f['password'].errors['minlength']">
+                        รหัสผ่านต้องมีความยาวอย่างน้อย 6 ตัวอักษร
+                    </div>
+                    <div *ngIf="f['password'].errors['maxlength']">
+                        รหัสผ่านต้องมีความยาวไม่เกิน 40 ตัวอักษร
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="form-control mt-2" type="password" placeholder="confirm password "
+                    formControlName="confirmPassword"
+                    [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }">
+                <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback text-start">
+                    <div *ngIf="f['confirmPassword'].errors['required']">
+                        โปรดกรอกรหัสผ่านยืนยัน
+                    </div>
+                    <div *ngIf="f['confirmPassword'].errors['minlength']">
+                        รหัสผ่านต้องมีความยาวอย่างน้อย 6 ตัวอักษร
+                    </div>
+                    <div *ngIf="f['confirmPassword'].errors['maxlength']">
+                        รหัสผ่านต้องมีความยาวไม่เกิน 40 ตัวอักษร
+                    </div>
+                    <div *ngIf="f['confirmPassword'].errors['mustMatch']">
+                        รหัสผ่านไม่ตรงกัน
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="button my-3">
+                <span> <a routerLink="/login" class="hover" style="cursor: pointer;"> Login</a> </span>
+                <button class="btn btn-success" type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+
+</div>
