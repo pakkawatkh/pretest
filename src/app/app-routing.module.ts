@@ -17,16 +17,16 @@ const routes: Routes = [
     path: 'contents', component: ContentsComponent
   },
   {
-    path: 'profile', component: ProfileComponent,canActivate:[GuardAuthenService]
+    path: 'profile', component: ProfileComponent, canActivate: [GuardAuthenService]
   },
   {
-    path:'edit-profile',component:EditProfileComponent
+    path: 'edit-profile', component: EditProfileComponent
   },
   {
-    path:'login',component:LoginComponent,canActivate:[GuardLoginService]
+    path: 'login', component: LoginComponent, canActivate: [GuardLoginService]
   },
   {
-    path:'register',component:RegisterComponent,canActivate:[GuardLoginService]
+    path: 'register', component: RegisterComponent, canActivate: [GuardLoginService]
   },
   {
     path: '', redirectTo: '/home', pathMatch: 'full'
