@@ -11,6 +11,7 @@
         <li><a routerLink="/home" routerLinkActive="active2" class="nav-link px-2 ">Home</a></li>
         <li><a routerLink="/contents" routerLinkActive="active2" class="nav-link px-2">Contents</a></li>
         <li><a routerLink="/profile" routerLinkActive="active2" class="nav-link px-2" *ngIf="login">Profile</a></li>
+        <li><a routerLink="/chat" routerLinkActive="active2" class="nav-link px-2" *ngIf="login">Chat</a></li>
       </ul>
 
       <div class="text-end" *ngIf="!login">

@@ -9,3 +9,13 @@ export interface  errorResponse {
     },
     status: number;
 }
+
+export interface IChatResponse{
+
+}
+export interface IChatMessage{
+    message?: string;
+    from?: string;
+    created?: Date;
+
+}

@@ -25,6 +25,7 @@ import { RegisterComponent } from './page/register/register.component';
 import { ChangePasswordComponent } from './page/profile/change-password/change-password.component';
 import { NetworkInterceptor } from './network/network.interceptor';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { ChatComponent } from './page/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     EditProfileComponent,
     RegisterComponent,
     ChangePasswordComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,8 @@
             </h1>
             <a class="hover col-2 col-md-1"><i (click)="openAdd()" class="fas fa-plus-circle fa-2x me-2"></i></a>
         </div>
-        <table class="table table-borderless table-responsive card-1 p-4">
+        <h1 class="text-center mt-5" *ngIf="contents.length == 0">No Contents</h1>
+        <table class="table table-borderless table-responsive card-1 p-4" *ngIf="contents.length > 0">
             <thead>
                 <tr class="border-bottom">
                     <th class="text-center">

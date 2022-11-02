@@ -1,0 +1,18 @@
+<h2 class="text-center mt-5">Chat Bot</h2>
+
+<div>
+    Connected : {{isConnected}}
+</div>
+
+<form [formGroup]="chatFormGroup" (ngSubmit)="onSubmit()">
+        
+        <input class="form-control" type="text" placeholder="Message" formControlName="message">
+        <button class="btn btn-success mt-2" type="submit" [disabled]="chatFormGroup.invalid">Send</button>
+
+</form>
+<h3 class="mt-5">Message</h3>
+
+    <p *ngFor="let message of message">
+      ({{message.created | date}} - {{message.from}}) : {{message.message}}
+    </p>
+

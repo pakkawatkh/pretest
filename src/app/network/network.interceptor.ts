@@ -13,18 +13,31 @@ import { LoadingService } from '../services/loading.service';
 export class NetworkInterceptor implements HttpInterceptor {
   constructor(private loader: LoadingService) {}
 
+  _IsnotShow = [
+    '/chat/message'
+  ];
+  hideSpinner: boolean = false;
+
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-  
-    this.loader.show();
+    for (let e of this._IsnotShow) {
+      if (request.url.includes(e)) {
+        this.hideSpinner = true;
+        break;
+      } else {
+        this.hideSpinner = false;
+      }
+    }
+
+    this.hideSpinner ? this.loader.hide() : this.loader.show();
 
     return next.handle(request).pipe(
       finalize(() => {
         // setTimeout(() => {
         this.loader.hide();
-        // }, 200);
+        // }, 1000);
       })
     );
   }

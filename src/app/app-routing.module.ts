@@ -1,3 +1,4 @@
+import { ChatComponent } from './page/chat/chat.component';
 import { GuardAuthenService } from './services/guard-authen.service';
 import { GuardLoginService } from './services/guard-login.service';
 import { RegisterComponent } from './page/register/register.component';
@@ -29,11 +30,15 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent, canActivate: [GuardLoginService]
   },
   {
+    path: 'chat', component: ChatComponent, canActivate: [GuardAuthenService]
+  },
+  {
     path: '', redirectTo: '/home', pathMatch: 'full'
   },
   {
     path: '**', redirectTo: '/home', pathMatch: 'full'
-  }
+  },
+
 ];
 
 @NgModule({
